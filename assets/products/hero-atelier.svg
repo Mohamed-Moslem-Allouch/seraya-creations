@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 760" role="img" aria-label="Illustration de bougies et créations artisanales">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F7D8D0"/><stop offset="1" stop-color="#FFF2E8"/></linearGradient>
+ <linearGradient id="wax" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#FFF9EE"/><stop offset="1" stop-color="#E9D5C4"/></linearGradient>
+ <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#E8AFAE"/><stop offset=".5" stop-color="#F8D9D2"/><stop offset="1" stop-color="#D58D91"/></linearGradient>
+ <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feGaussianBlur in="SourceAlpha" stdDeviation="15"/><feOffset dy="17"/><feColorMatrix values="0 0 0 0 .20 0 0 0 0 .13 0 0 0 0 .28 0 0 0 .16 0"/><feBlend in="SourceGraphic"/></filter>
+</defs>
+<rect x="20" y="22" width="860" height="716" rx="220" fill="url(#bg)"/>
+<path d="M34 500C120 390 205 430 282 493S429 580 525 487 723 382 866 504V718H34Z" fill="#EFC8C1" opacity=".55"/>
+<circle cx="700" cy="170" r="90" fill="#E3DDF1"/><circle cx="170" cy="165" r="54" fill="#D9E2D4"/>
+<!-- flowers -->
+<g stroke="#71816F" stroke-width="7" stroke-linecap="round" fill="none"><path d="M155 510Q145 360 190 230M188 510Q210 365 260 280M740 500Q765 350 724 235M780 520Q815 380 835 300"/></g>
+<g fill="#B5C2A9"><ellipse cx="170" cy="350" rx="22" ry="49" transform="rotate(-40 170 350)"/><ellipse cx="211" cy="390" rx="20" ry="46" transform="rotate(42 211 390)"/><ellipse cx="757" cy="350" rx="23" ry="52" transform="rotate(36 757 350)"/><ellipse cx="794" cy="400" rx="20" ry="46" transform="rotate(-45 794 400)"/></g>
+<g fill="#B78BC0"><circle cx="190" cy="215" r="15"/><circle cx="174" cy="238" r="13"/><circle cx="202" cy="246" r="14"/><circle cx="724" cy="220" r="15"/><circle cx="704" cy="240" r="13"/><circle cx="742" cy="247" r="13"/></g>
+<g fill="#D9818A"><circle cx="832" cy="287" r="13"/><circle cx="816" cy="312" r="12"/><circle cx="845" cy="318" r="12"/><circle cx="260" cy="267" r="12"/><circle cx="246" cy="290" r="11"/><circle cx="275" cy="295" r="11"/></g>
+<!-- table --> <ellipse cx="456" cy="640" rx="320" ry="42" fill="#C18E88" opacity=".24"/><path d="M110 590Q456 545 790 590L760 672Q450 710 140 670Z" fill="#E5B9A8"/>
+<!-- left short candle -->
+<g filter="url(#shadow)"><rect x="210" y="403" width="174" height="190" rx="28" fill="url(#glass)"/><ellipse cx="297" cy="405" rx="87" ry="22" fill="#F9E4DA"/><ellipse cx="297" cy="410" rx="73" ry="14" fill="url(#wax)"/><path d="M297 403V376" stroke="#6C514A" stroke-width="5"/><path d="M297 374C277 351 300 332 304 311C325 344 322 359 297 374Z" fill="#F7B267"/><rect x="235" y="468" width="124" height="72" rx="8" fill="#FFF4EA"/><text x="297" y="497" text-anchor="middle" font-family="Georgia,serif" font-size="23" fill="#1F2A5C">SERAYA</text><text x="297" y="521" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" letter-spacing="3" fill="#B04A5A">LAVANDE</text></g>
+<!-- center tall candle -->
+<g filter="url(#shadow)"><rect x="405" y="300" width="190" height="294" rx="34" fill="#D8CFEA"/><ellipse cx="500" cy="302" rx="95" ry="25" fill="#EDE6F3"/><ellipse cx="500" cy="307" rx="80" ry="17" fill="url(#wax)"/><path d="M500 300V265" stroke="#6C514A" stroke-width="6"/><path d="M500 264C478 239 506 215 508 192C535 226 530 248 500 264Z" fill="#F7B267"/><rect x="432" y="400" width="136" height="105" rx="12" fill="#FFF4EA"/><text x="500" y="438" text-anchor="middle" font-family="Georgia,serif" font-size="25" fill="#1F2A5C">SERAYA</text><text x="500" y="466" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" letter-spacing="3" fill="#B04A5A">DOUCEUR</text></g>
+<!-- plaster tray -->
+<g filter="url(#shadow)"><path d="M610 564Q680 520 770 560L740 626Q680 655 625 622Z" fill="#E6DDF1" stroke="#C2B4D6" stroke-width="5"/><ellipse cx="692" cy="579" rx="55" ry="21" fill="#F2EBF6"/><circle cx="670" cy="580" r="10" fill="#D99AA0"/><circle cx="710" cy="573" r="7" fill="#D6B98B"/><path d="M648 602Q688 620 730 600" stroke="#C0B1D2" stroke-width="4" fill="none"/></g>
+<!-- stars --> <g fill="#F7B267"><path d="M120 300l10 24 25 10-25 9-10 25-9-25-25-9 25-10z"/><path d="M795 145l8 18 18 8-18 8-8 18-8-18-18-8 18-8z"/><path d="M370 170l6 14 15 6-15 6-6 15-6-15-14-6 14-6z"/></g>
+<g fill="#B04A5A"><path d="M570 125c-17-25-52-2 0 34 52-36 17-59 0-34z"/><path d="M130 560c-12-19-39-2 0 26 39-28 12-45 0-26z"/></g>
+</svg>
