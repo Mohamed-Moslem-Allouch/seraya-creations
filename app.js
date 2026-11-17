@@ -349,10 +349,13 @@ const init=()=>{
  // secret: click a sticker or the footer signature for a shower of petals
  const t=document.querySelector('[data-toast]');let tm;
  const say=m=>{if(!t)return;t.textContent=m;t.classList.add('show');clearTimeout(tm);tm=setTimeout(()=>t.classList.remove('show'),3200)};
- const shower=()=>{say("Tu as trouvé le petit secret de l'atelier ♡");if(rm)return;const g=['✿','♡','✦','✧','❀'],c=['#B04A5A','#F7B267','#BEB0D5','#EBC3B8'];
-  for(let i=0;i<26;i++){const p=document.createElement('span');p.textContent=g[i%5];p.setAttribute('aria-hidden','true');p.style.cssText=`position:fixed;left:${Math.random()*100}vw;top:-30px;z-index:220;pointer-events:none;font-size:${14+Math.random()*16}px;color:${c[i%4]}`;document.body.appendChild(p);
-   p.animate([{transform:'translate(0,0) rotate(0)',opacity:1},{transform:`translate(${(Math.random()-.5)*160}px,${innerHeight+60}px) rotate(${Math.random()*540-270}deg)`,opacity:.2}],{duration:2600+Math.random()*2200,delay:Math.random()*700,easing:'cubic-bezier(.3,.1,.5,1)',fill:'backwards'}).onfinish=()=>p.remove()}};
- document.querySelectorAll('.floating-note,.feature-sticker,.footer-script').forEach(el=>el.addEventListener('click',shower));
+ const shower=()=>{say("Des cœurs et des bougies, rien que pour toi ♡");if(rm)return;const c=['#E88BA5','#C25577','#BFB1EA','#F6BCCB'];
+  for(let i=0;i<24;i++){const p=document.createElement('span'),k=i%3===1,sw=(Math.random()-.5)*140,rot=(Math.random()-.5)*50;
+   p.textContent=k?'🕯️':'♥';p.setAttribute('aria-hidden','true');
+   p.style.cssText=`position:fixed;left:${3+Math.random()*94}vw;top:-40px;z-index:220;pointer-events:none;line-height:1;font-size:${k?20+Math.random()*10:16+Math.random()*16}px;color:${c[i%4]}`;
+   document.body.appendChild(p);
+   p.animate([{transform:'translate(0,0) rotate(0)',opacity:0},{opacity:1,offset:.08},{transform:`translate(${sw}px,${innerHeight*.5}px) rotate(${rot}deg)`,opacity:1,offset:.55},{transform:`translate(${-sw/2}px,${innerHeight+60}px) rotate(${-rot}deg)`,opacity:.25}],{duration:3000+Math.random()*2400,delay:Math.random()*900,easing:'cubic-bezier(.35,.1,.45,1)',fill:'backwards'}).onfinish=()=>p.remove()}};
+ document.querySelectorAll('.floating-note,.feature-sticker,.footer-script').forEach(el=>{el.addEventListener('click',shower);if(!el.matches('.footer-script')){el.tabIndex=0;el.setAttribute('role','button');el.setAttribute('aria-label','Faire tomber des cœurs et des bougies');el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();shower()}})}});
 };
 document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
 })();
@@ -382,7 +385,7 @@ const init=()=>{
  const fit=()=>{const a=nav.querySelector('.on');go(a?ctr(a):-200,0)};
  fit();addEventListener('resize',fit);
  nav.querySelectorAll('.count').forEach(b=>{const s=()=>b.style.display=b.textContent.trim()==='0'?'none':'';new MutationObserver(s).observe(b,{childList:true,characterData:true,subtree:true});s()});
- nav.addEventListener('click',e=>{const a=e.target.closest('a');if(!a||a.classList.contains('on')||e.metaKey||e.ctrlKey||e.shiftKey)return;e.preventDefault();nav.querySelectorAll('a').forEach(x=>x.classList.toggle('on',x===a));go(ctr(a),rm?0:300);R.classList.add('leaving');setTimeout(()=>location.href=a.href,rm?0:300)});
+ nav.addEventListener('click',e=>{const a=e.target.closest('a');if(!a||a.classList.contains('on')||e.metaKey||e.ctrlKey||e.shiftKey)return;e.preventDefault();nav.querySelectorAll('a').forEach(x=>x.classList.toggle('on',x===a));go(ctr(a),rm?0:200);setTimeout(()=>location.href=a.href,rm?0:210)});
  const ha=document.querySelector('.nav-actions');
  if(ha)ha.insertAdjacentHTML('afterbegin',`<a class="icon-link nav-account" href="compte.html" aria-label="Mon compte">${svg(I.user)}</a>`);
  const mn=document.querySelector('.mobile-nav');if(mn)mn.insertAdjacentHTML('beforeend','<a href="compte.html">Mon compte</a>');
@@ -404,15 +407,90 @@ const init=()=>{
 document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
 })();
 
-/* ===== v6: smooth page transitions ===== */
+
+
+/* ===== v10: alive ===== */
 (()=>{
-const R=document.documentElement,rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
-addEventListener('pageshow',()=>R.classList.remove('leaving'));
-document.addEventListener('click',e=>{
- if(e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
- const a=e.target.closest('a[href]');if(!a||a.target||a.hasAttribute('download'))return;
- const u=new URL(a.href,location.href);
- if(u.protocol!==location.protocol||u.host!==location.host||(u.pathname===location.pathname&&u.search===location.search))return;
- e.preventDefault();R.classList.add('leaving');setTimeout(()=>location.href=a.href,rm?0:240);
-});
+const R=document.documentElement,rm=matchMedia('(prefers-reduced-motion:reduce)').matches,CL=['#E88BA5','#C25577','#BFB1EA','#F6BCCB'];
+const ls={g:k=>{try{return localStorage.getItem(k)}catch(e){return null}},s:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+const burst=(x,y,n=7)=>{if(rm)return;for(let i=0;i<n;i++){const s=document.createElement('span'),a=Math.PI*2*i/n+Math.random()*.6,d=34+Math.random()*34;s.textContent='♥';s.setAttribute('aria-hidden','true');s.style.cssText=`position:fixed;left:${x}px;top:${y}px;z-index:230;pointer-events:none;line-height:1;font-size:${11+Math.random()*9}px;color:${CL[i%4]}`;document.body.appendChild(s);s.animate([{transform:'translate(-50%,-50%) scale(.4)',opacity:1},{transform:`translate(calc(-50% + ${Math.cos(a)*d}px),calc(-50% + ${Math.sin(a)*d-18}px)) scale(1)`,opacity:0}],{duration:650+Math.random()*250,easing:'cubic-bezier(.2,.8,.3,1)'}).onfinish=()=>s.remove()}};
+window.__burst=burst;const rise=box=>{if(rm||document.hidden||!box)return;const s=document.createElement('span');s.className='fl';s.textContent=Math.random()<.3?'✦':'♥';s.setAttribute('aria-hidden','true');s.style.cssText=`left:${15+Math.random()*70}%;bottom:14%;font-size:${10+Math.random()*10}px;color:${CL[Math.floor(Math.random()*4)]}`;box.appendChild(s);const sw=(Math.random()-.5)*50;s.animate([{transform:'translate(0,0)',opacity:0},{opacity:.85,offset:.2},{transform:`translate(${sw}px,-${150+Math.random()*90}px)`,opacity:0}],{duration:3400+Math.random()*1600,easing:'ease-out'}).onfinish=()=>s.remove()};
+const init=()=>{
+ const h=new Date().getHours(),night=h>=18||h<6;if(night)R.classList.add('evening');
+ // hero: greeting that knows the time and whether she's back, plus drifting hearts
+ const hero=document.querySelector('.hero'),eb=document.querySelector('.hero .eyebrow');
+ if(eb){const v=+ls.g('sv')||0;ls.s('sv',v+1);eb.textContent=`${v>0?'Contente de te revoir':night?'Bonsoir':'Bonjour'} ♡ des créations pensées avec le cœur`}
+ const art=document.querySelector('.hero-art');if(art)setInterval(()=>{if(scrollY<innerHeight)rise(art)},1700);
+ // delight on hearts and add-to-cart
+ document.addEventListener('click',e=>{const b=e.target.closest('[data-favorite],[data-add-to-cart]');if(!b)return;const r=b.getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2);navigator.vibrate&&navigator.vibrate(12)});
+ // a friendly nudge in the tab title when she leaves
+ const t0=document.title,cc=()=>+(document.querySelector('[data-cart-count]')?.textContent||0);
+ document.addEventListener('visibilitychange',()=>{document.title=document.hidden?(cc()>0?"Ton panier t'attend ♡":"Ton moment douceur t'attend ♡"):t0});
+ // product page: light the candle, scent-tinted glow, live gift card
+ const pm=document.querySelector('.product-main-image');
+ if(pm){
+  const T={Lavande:'rgba(190,176,235,.7)',Rose:'rgba(246,160,185,.65)',Vanille:'rgba(255,228,170,.7)'};
+  pm.insertAdjacentHTML('afterbegin','<i class="lit-glow" aria-hidden="true"></i>');
+  const hint=document.createElement('button');hint.type='button';hint.className='lit-hint';hint.textContent="Touche pour allumer la bougie 🕯️";pm.appendChild(hint);
+  let iv=0;const tog=()=>{const on=pm.classList.toggle('lit');hint.textContent=on?'Éteindre 🕯️':"Touche pour allumer la bougie 🕯️";clearInterval(iv);if(on)iv=setInterval(()=>rise(pm),800)};
+  hint.addEventListener('click',e=>{e.stopPropagation();tog()});pm.querySelector('img')?.addEventListener('click',tog);
+  const tint=s=>{if(T[s])pm.style.setProperty('--tint',T[s])};
+  tint(document.querySelector('[data-scent].selected')?.dataset.scent);
+  document.addEventListener('click',e=>{const b=e.target.closest('[data-scent]');if(b)tint(b.dataset.scent)});
+  const gn=document.querySelector('.gift-note'),inp=document.getElementById('gift-message');
+  if(gn&&inp){const nc=document.createElement('div');nc.className='note-card';nc.hidden=true;nc.innerHTML='<span>Pour toi,</span><p></p><em>avec amour ♡</em>';gn.after(nc);inp.addEventListener('input',()=>{nc.hidden=!inp.value.trim();nc.querySelector('p').textContent=inp.value})}
+ }
+};
+document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
+})();
+
+/* ===== v11: icons, scallops, ritual, product helpers ===== */
+(()=>{
+const ls={g:k=>{try{return localStorage.getItem(k)}catch(e){return null}},s:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+const P={heart:'<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/>',candle:'<path d="M7 11h10v8a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2zM12 3c1.7 2 2.3 3.3 0 5.3-2.3-2-1.7-3.3 0-5.3zM12 8.3V11"/>',flower:'<circle cx="12" cy="12" r="2.2"/><path d="M12 9.8C10.5 7 11 4.5 12 3c1 1.5 1.5 4 0 6.8zM14.2 12c2.8-1.5 5.3-1 6.8 0-1.5 1-4 1.5-6.8 0zM12 14.2c1.5 2.8 1 5.3 0 6.8-1-1.5-1.5-4 0-6.8zM9.8 12C7 13.5 4.5 13 3 12c1.5-1 4-1.5 6.8 0z"/>',sparkle:'<path d="M12 3c.6 4.2 1.8 5.4 6 6-4.2.6-5.4 1.8-6 6-.6-4.2-1.8-5.4-6-6 4.2-.6 5.4-1.8 6-6zM19 15c.3 1.8.8 2.3 2.6 2.6-1.8.3-2.3.8-2.6 2.6-.3-1.8-.8-2.3-2.6-2.6 1.8-.3 2.3-.8 2.6-2.6z"/>',gift:'<path d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>',mail:'<path d="M3 6h18v12H3zM3 7l9 7 9-7"/>',share:'<circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.2 10.8l7.6-3.6M8.2 13.2l7.6 3.6"/>'};
+const ico=(n,c='ico')=>`<svg class="${c}" viewBox="0 0 24 24" aria-hidden="true">${P[n]}</svg>`;
+const say=m=>{const t=document.querySelector('[data-toast]');if(!t)return;t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200)};
+const init=()=>{
+ document.querySelectorAll('.section-title .eyebrow').forEach(e=>e.insertAdjacentHTML('afterbegin',ico('sparkle')+' '));
+ const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});
+ const pop=(el,i=0)=>{el.style.setProperty('--i',i);el.classList.add('pop');io.observe(el)};
+ // HOME: how it's made + daily note
+ const fs=document.querySelector('[data-products="featured"]')?.closest('section');
+ if(fs){
+  const M=['Respire. Tu fais déjà de ton mieux ♡','Offre-toi un petit moment rien qu’à toi.','Une bougie, une boisson chaude, et tout va mieux.','Tu mérites la douceur que tu donnes aux autres.','Les petites attentions changent les grandes journées.','Ralentis un peu : le calme aussi est une force.','Ce soir, allume quelque chose de joli.','Tu es plus forte que tu ne le crois.','Un vrai sourire embellit toute la pièce.','Prends soin de toi comme de ce que tu aimes.','Même les petits pas font avancer.','La douceur est une force ♡'];
+  const day=Math.floor(Date.now()/864e5),n=document.createElement('section');n.className='section note-day';
+  n.innerHTML=`<div class="container center"><p class="eyebrow">chaque jour un nouveau</p><h2 class="display display-sm">Ton petit mot du jour</h2><button class="env scallop" type="button">${ico('mail')}<span>Touche pour l’ouvrir</span></button><div class="day-card scallop" hidden><p></p><small>Reviens demain pour un nouveau mot ♡</small></div></div>`;
+  fs.after(n);const env=n.querySelector('.env'),card=n.querySelector('.day-card');
+  const open=fx=>{card.querySelector('p').textContent=M[day%M.length];env.hidden=true;card.hidden=false;ls.s('dn',day);if(fx){const b=card.getBoundingClientRect();window.__burst&&window.__burst(b.left+b.width/2,b.top+30,9)}};
+  env.addEventListener('click',()=>open(true));if(+ls.g('dn')===day)open(false);
+ }
+ // PRODUCT: benefits, share, cross-sell, sticky bar
+ const buy=document.querySelector('.buy-row'),add=buy&&buy.querySelector('[data-add-to-cart]');
+ if(buy){
+  const sh=document.createElement('button');sh.type='button';sh.className='icon-link';sh.setAttribute('aria-label','Offrir ou partager');sh.innerHTML=ico('share');buy.appendChild(sh);
+  sh.addEventListener('click',async()=>{try{if(navigator.share){await navigator.share({title:document.title,url:location.href})}else{await navigator.clipboard.writeText(location.href);say('Lien copié ♡ envoie-le à quelqu’un qui l’adorerait')}}catch(e){}});
+  const X=[['bougie-lavande','Bougie Lavande'],['bougie-rose','Bougie Rose Poudrée'],['bougie-vanille','Bougie Vanille'],['coffret-cocon','Coffret Cocon']],cur=add&&add.dataset.addToCart,k=(location.search.match(/[?&]([a-z]+)=/i)||[])[1]||'id';
+  const al=document.createElement('section');al.className='also';
+  al.innerHTML=`<h2 class="display display-sm">Tu aimeras peut-être aussi</h2><div class="also-grid">${X.filter(x=>x[0]!==cur).slice(0,3).map(x=>`<a class="also-card scallop" href="produit.html?${k}=${x[0]}"><img src="assets/products/${x[0]}.svg" alt=""><span>${x[1]}</span></a>`).join('')}</div>`;
+  (document.querySelector('.product-layout')||buy).after(al);al.querySelectorAll('.also-card').forEach((c,i)=>pop(c,i));
+  const h1=document.querySelector('h1');
+  if(add&&h1&&matchMedia('(min-width:701px)').matches){const sb=document.createElement('div');sb.className='sticky-buy';sb.innerHTML='<b></b><button class="btn btn-small" type="button">Ajouter au panier ♡</button>';sb.firstChild.textContent=h1.textContent;document.body.appendChild(sb);sb.querySelector('button').onclick=()=>add.click();new IntersectionObserver(([e])=>sb.classList.toggle('show',!e.isIntersecting&&e.boundingClientRect.top<0)).observe(buy)}
+ }
+};
+document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
+})();
+
+/* ===== v12: gift switch, prefetch ===== */
+(()=>{
+const init=()=>{
+ ['index','boutique','favoris','panier'].forEach(n=>{const l=document.createElement('link');l.rel='prefetch';l.href=n+'.html';document.head.appendChild(l)});
+ const gn=document.querySelector('.gift-note'),inp=document.getElementById('gift-message'),lab=gn&&gn.querySelector('label');
+ if(!gn||!inp||!lab)return;
+ gn.classList.add('gift-switch');
+ const row=document.createElement('button');row.type='button';row.className='sw-row';row.setAttribute('role','switch');row.setAttribute('aria-checked','false');row.innerHTML='<span></span><i class="sw"><i></i></i>';row.firstChild.textContent=lab.textContent;lab.replaceWith(row);
+ const body=document.createElement('div'),box=document.createElement('div');body.className='sw-body';box.appendChild(inp);body.appendChild(box);gn.appendChild(body);
+ let kept='';
+ row.addEventListener('click',()=>{const on=row.getAttribute('aria-checked')!=='true';row.setAttribute('aria-checked',on);gn.classList.toggle('on',on);if(on){inp.value=kept;setTimeout(()=>inp.focus({preventScroll:true}),260)}else{kept=inp.value;inp.value=''}inp.dispatchEvent(new Event('input'))});
+};
+document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
 })();

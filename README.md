@@ -87,3 +87,41 @@ La palette et les éléments de marque ont été repris et harmonisés à partir
 - Fiche produit : « Choisis ton parfum » et « Ta taille » s'affichent avec leurs choix sur les coffrets (le parfum et la taille sont gardés dans le panier, sans changer le coffret). Sur la décoration, ces choix ne s'affichent pas.
 - Transitions douces entre les pages (ordinateur et mobile) : le contenu se fond puis le suivant apparaît, l'en-tête reste en place.
 - Barre mobile : nouvelles icônes (accueil, bougie, cœur, panier) ; l'onglet Accueil remplace « coffrets cadeaux ».
+
+## Améliorations v8 — couleurs pastel
+
+- Palette pastel complète : rose poudré, lavande, pêche, menthe et bleu ciel, avec un bleu nuit adouci pour les textes.
+- Les grands aplats foncés sont devenus pastel : pied de page, newsletter, boutons, pastilles, filtres, cartes de catégories et barre mobile.
+- Le mode bougie garde son ambiance nocturne.
+
+## Améliorations v9
+
+- Le bouton « fait main avec amour » (et la pastille « créé avec le cœur ») fait tomber des cœurs et des bougies ; accessible aussi au clavier.
+- Version A = pastel avec pêche/doré (celle-ci). Version B = même site sans jaune (menthe, ciel, rose, lavande).
+
+## Améliorations v10 — site « vivant »
+
+- Accueil : salutation selon l'heure et le retour de la visiteuse, cœurs qui flottent près de l'illustration, mini-question « Quelle ambiance ce soir ? » (mémorisée, le coup de cœur est repéré sur les cartes), ambiance du soir.
+- Fiche produit : « Touche pour allumer la bougie » (lueur teintée selon le parfum), aperçu en direct du petit mot cadeau.
+- Partout : mini-explosion de cœurs sur favoris/panier, message amical dans l'onglet quand elle s'éloigne.
+- Aucune fausse rareté, aucun faux compte à rebours, aucun faux avis.
+
+## Améliorations v11
+
+- Bords festonnés : séparateurs en haut et en bas des sections colorées + cadre festonné (cartes, mots, étapes).
+- Icônes line-art mignonnes (cœur, bougie, fleur, étincelle, cadeau, enveloppe, partage).
+- Accueil : « Comment naît ta bougie » (3 étapes) et « Ton petit mot du jour » (un nouveau mot chaque jour, mémorisé).
+- Fiche produit : atouts avec icônes, bouton partager/offrir, « Tu aimeras peut-être aussi », barre d'achat qui suit au défilement (ordinateur).
+
+## Améliorations v12
+
+- Retrait de la mini-question d'ambiance, de « Comment naît ta bougie » et des rangées d'atouts (accueil et fiche produit) pour alléger le mobile.
+- Navigation plus fluide : plus de fondu de sortie ni de délai, encoche qui glisse en 0,2 s, entrée douce du contenu, pages principales préchargées.
+- Fiche produit mobile : barre d'achat plus compacte.
+- Petit mot cadeau : interrupteur qui déplie le champ.
+- Formes : dentelle festonnée sous l'en-tête, vague après l'accueil, motif écailles festonnées, arches (image produit, cartes catégories).
+
+## Améliorations v13
+
+- Retrait de la vague sur la bande défilante (retour à l'ancien style) et du motif d'écailles roses (sections colorées et pied de page).
+- Plus d'espace entre « Tu aimeras peut-être aussi » et la section colorée qui suit.
